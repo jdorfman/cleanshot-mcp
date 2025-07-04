@@ -1,21 +1,23 @@
-# CleanShot MCP Server
+# CleanShot MCP Server (Unofficial)
 
 A Model Context Protocol (MCP) server that provides integration with CleanShot's URL scheme API. This server allows you to trigger CleanShot actions programmatically through MCP-compatible applications. [Created with Amp](https://ampcode.com/threads/T-6a3d9fd7-62e8-4e14-b6e8-f1b8ad9c4348).
 
 ## Features
 
-This MCP server provides access to all CleanShot URL scheme commands:
+This MCP server provides access to all CleanShot URL scheme commands. Not all commands have been thoroughly tested, so please use at your own discretion.
 
 ### Screenshots
 
-- **All-In-One Mode**: Launch CleanShot's unified capture interface
-- **Capture Area**: Take area screenshots with optional coordinates
-- **Capture Previous Area**: Repeat the last screenshot
-- **Capture Fullscreen**: Take fullscreen screenshots
-- **Capture Window**: Capture specific windows
-- **Self-Timer**: Take screenshots with a timer
-- **Scrolling Capture**: Capture scrolling content
-- **Pin Screenshot**: Pin screenshots as overlays
+| Feature | Description | Tested? |
+|---------|-------------|---------|
+| **All-In-One Mode** | Launch CleanShot's unified capture interface | |
+| **Capture Area** | Take area screenshots with optional coordinates | ✅ |
+| **Capture Previous Area** | Repeat the last screenshot | ✅ |
+| **Capture Fullscreen** | Take fullscreen screenshots | |
+| **Capture Window** | Capture specific windows | |
+| **Self-Timer** | Take screenshots with a timer | |
+| **Scrolling Capture** | Capture scrolling content | ✅ |
+| **Pin Screenshot** | Pin screenshots as overlays | |
 
 ### Screen Recording
 
@@ -85,7 +87,7 @@ npm start
 
 ### MCP Client Configuration
 
-Add this server to your MCP client configuration. For example, in Claude Desktop:
+Add this server to your MCP client configuration. For example, in [Amp](https://ampcode.com):
 
 ```json
 {
@@ -239,5 +241,6 @@ MIT
 For issues related to:
 
 - **This MCP server**: Open an issue on GitHub
-- **CleanShot functionality**: Contact [CleanShot support](mailto:hello@cleanshot.com)
 - **MCP protocol**: See [MCP documentation](https://modelcontextprotocol.io)
+
+Please **DO NOT** contact CleanShot support for problems with this MCP server. They are not connected to this project. We're just big fans :heart:
