@@ -1,6 +1,6 @@
 # CleanShot MCP Server
 
-A Model Context Protocol (MCP) server that provides integration with CleanShot's URL scheme API. This server allows you to trigger CleanShot actions programmatically through MCP-compatible applications. [Created with Amp](https://github.com/jdorfman/cleanshot-mcp).
+A Model Context Protocol (MCP) server that provides integration with CleanShot's URL scheme API. This server allows you to trigger CleanShot actions programmatically through MCP-compatible applications. [Created with Amp](https://ampcode.com/threads/T-6a3d9fd7-62e8-4e14-b6e8-f1b8ad9c4348).
 
 ## Features
 
