@@ -1,0 +1,32 @@
+{
+  "name": "cleanshot-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for CleanShot URL scheme API",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "cleanshot",
+    "screenshot",
+    "screen-recording",
+    "macOS"
+  ],
+  "author": "Justin Dorfman",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
