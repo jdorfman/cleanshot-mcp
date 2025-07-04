@@ -11,7 +11,7 @@ This MCP server provides access to all CleanShot URL scheme commands. Not all co
 | Feature | Description | Tested? |
 |---------|-------------|---------|
 | **All-In-One Mode** | Launch CleanShot's unified capture interface | |
-| **Capture Area** | Take area screenshots with optional coordinates | |
+| **Capture Area** | Take area screenshots with optional coordinates | ✅ |
 | **Capture Previous Area** | Repeat the last screenshot | ✅ |
 | **Capture Fullscreen** | Take fullscreen screenshots | |
 | **Capture Window** | Capture specific windows | |
