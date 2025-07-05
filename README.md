@@ -9,7 +9,8 @@ _Built with the [Model Context Protocol (MCP)](https://modelcontextprotocol.io) 
 ## Requirements
 
 - macOS
-- CleanShot X installed and running
+- [CleanShot X](https://cleanshot.com/) installed and running
+  - ⚙️ Settings > Advanced > API > ☑️ Allow applications to control CleanShot X
 - Node.js 18+
 
 ## Quick Start
