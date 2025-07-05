@@ -92,7 +92,7 @@ Add this server to your MCP client configuration. For example, in [Amp](https://
 
 ```json
 {
-  "mcpServers": {
+  "amp.mcpServers": {
     "cleanshot": {
       "command": "node",
       "args": ["/path/to/cleanshot-mcp/dist/index.js"],
