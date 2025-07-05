@@ -140,7 +140,7 @@ All tools are prefixed with `cleanshot_` and correspond to CleanShot's URL schem
 - `cleanshot_restore_recently_closed` - Restore recent file
 - `cleanshot_open_settings` - Open settings
 
-## Examples
+## Examples (Human Tested)
 
 **Prompt:**
 > Capture fullscreen and copy
