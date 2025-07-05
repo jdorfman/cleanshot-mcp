@@ -52,7 +52,7 @@ This MCP server provides access to all CleanShot URL scheme commands. Not all co
 
 - macOS (CleanShot is macOS-only)
 - CleanShot X installed and running
-- Node.js 18+ 
+- Node.js 18+
 - CleanShot Pro license (for URL scheme API access)
 
 ## Installation
@@ -81,6 +81,7 @@ npm run build
 ### Running the Server
 
 Start the MCP server:
+
 ```bash
 npm start
 ```
@@ -243,4 +244,5 @@ For issues related to:
 - **This MCP server**: Open an issue on GitHub
 - **MCP protocol**: See [MCP documentation](https://modelcontextprotocol.io)
 
-Please **DO NOT** contact CleanShot support for problems with this MCP server. They are not connected to this project. We're just big fans :heart:
+> [!IMPORTANT]
+> Please **DO NOT** contact CleanShot support for problems with this MCP server. They are not connected to this project. We're just big fans :heart:
