@@ -2,89 +2,15 @@
 
 A Model Context Protocol (MCP) server that provides integration with CleanShot's URL scheme API. This server allows you to trigger [CleanShot](https://cleanshot.com/) actions programmatically through MCP-compatible applications. [Created with Amp](https://ampcode.com/threads/T-6a3d9fd7-62e8-4e14-b6e8-f1b8ad9c4348).
 
-## Features
+## Table of Contents
 
-This MCP server provides access to all CleanShot URL scheme commands. Not all commands have been thoroughly tested, so please use at your own discretion.
+- [Getting Started](#getting-started)
+- [Examples](#examples)
+- [Available Tools](#available-tools)
+- [Development](#development)
+- [Requirements](#requirements)
 
-### Screenshots
-
-| Feature | Description | Human Tested? |
-|---------|-------------|---------|
-| **All-In-One Mode** | Launch CleanShot's unified capture interface | ✅ |
-| **Capture Area** | Take area screenshots with optional coordinates | ✅ |
-| **Capture Previous Area** | Repeat the last screenshot | ✅ |
-| **Capture Fullscreen** | Take fullscreen screenshots | ✅ |
-| **Capture Window** | Capture specific windows | ✅ |
-| **Self-Timer** | Take screenshots with a timer | ✅ |
-| **Scrolling Capture** | Capture scrolling content | ✅ |
-| **Pin Screenshot** | Pin screenshots as overlays (must include full path, supports only `png` or `jpg`) | ⚠️ |
-
-### Screen Recording
-
-- **Record Screen**: Start screen recording with optional area selection
-
-### Text Recognition (OCR)
-
-- **Capture Text**: Extract text from screen areas or image files
-
-### Annotation
-
-- **Open Annotate**: Open files in CleanShot's annotation tool
-- **Open from Clipboard**: Annotate clipboard images
-
-### Desktop Management
-
-- **Toggle Desktop Icons**: Show/hide desktop icons
-- **Hide Desktop Icons**: Hide desktop icons
-- **Show Desktop Icons**: Show desktop icons
-
-### Quick Access & History
-
-- **Add Quick Access Overlay**: Add files to quick access
-- **Open History**: Access capture history
-- **Restore Recently Closed**: Restore recently closed files
-
-### Settings
-
-- **Open Settings**: Open CleanShot settings with optional tab selection
-
-## Requirements
-
-- macOS
-- CleanShot X installed and running
-- Node.js 18+
-- CleanShot Pro license (for URL scheme API access)
-
-## Installation
-
-1. Clone this repository:
-
-```bash
-git clone https://github.com/jdorfman/cleanshot-mcp.git
-cd cleanshot-mcp
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Build the project:
-
-```bash
-npm run build
-```
-
-## Usage
-
-### Running the Server
-
-Start the MCP server:
-
-```bash
-npm start
-```
+## Getting Started
 
 ### MCP Client Configuration
 
@@ -102,45 +28,7 @@ Add this server to your MCP client configuration. For example, in [Amp](https://
 }
 ```
 
-### Available Tools
-
-All tools are prefixed with `cleanshot_` and correspond to CleanShot's URL scheme commands:
-
-#### Basic Screenshot Tools
-
-- `cleanshot_capture_area` - Open area capture mode
-- `cleanshot_capture_fullscreen` - Take fullscreen screenshot
-- `cleanshot_capture_window` - Capture window mode
-- `cleanshot_capture_previous_area` - Repeat last screenshot
-
-#### Advanced Capture Tools
-
-- `cleanshot_all_in_one` - Launch All-In-One mode
-- `cleanshot_scrolling_capture` - Scrolling capture mode
-- `cleanshot_self_timer` - Self-timer capture
-- `cleanshot_record_screen` - Screen recording mode
-
-#### Text & Annotation Tools
-
-- `cleanshot_capture_text` - OCR text extraction
-- `cleanshot_open_annotate` - Open annotation tool
-- `cleanshot_open_from_clipboard` - Annotate clipboard image
-
-#### Utility Tools
-
-- `cleanshot_pin` - Pin screenshots
-- `cleanshot_toggle_desktop_icons` - Toggle desktop icons
-- `cleanshot_hide_desktop_icons` - Hide desktop icons
-- `cleanshot_show_desktop_icons` - Show desktop icons
-
-#### Management Tools
-
-- `cleanshot_add_quick_access_overlay` - Add to quick access
-- `cleanshot_open_history` - Open capture history
-- `cleanshot_restore_recently_closed` - Restore recent file
-- `cleanshot_open_settings` - Open settings
-
-## Examples (Human Tested)
+## Examples
 
 **Prompt:**
 > Capture fullscreen and copy
@@ -167,6 +55,54 @@ cleanshot • cleanshot_capture_area
 
 Opened CleanShot Capture Area: cleanshot://capture-area?x=100&y=100&width=500&height=300&action=upload
 ```
+
+## Available Tools
+
+All tools are prefixed with `cleanshot_` and correspond to CleanShot's URL scheme commands:
+
+### Basic Screenshot Tools
+
+| Tool Name | Description | Human Tested? |
+|-----------|-------------|---------------|
+| `cleanshot_capture_area` | Open area capture mode | ✅ |
+| `cleanshot_capture_fullscreen` | Take fullscreen screenshot | ✅ |
+| `cleanshot_capture_window` | Capture window mode | ✅ |
+| `cleanshot_capture_previous_area` | Repeat last screenshot | ✅ |
+
+### Advanced Capture Tools
+
+| Tool Name | Description | Human Tested? |
+|-----------|-------------|---------------|
+| `cleanshot_all_in_one` | Launch All-In-One mode | ✅ |
+| `cleanshot_scrolling_capture` | Scrolling capture mode | ✅ |
+| `cleanshot_self_timer` | Self-timer capture | ✅ |
+| `cleanshot_record_screen` | Screen recording mode | ✅ |
+
+### Text & Annotation Tools
+
+| Tool Name | Description | Human Tested? |
+|-----------|-------------|---------------|
+| `cleanshot_capture_text` | OCR text extraction | ✅ |
+| `cleanshot_open_annotate` | Open annotation tool | ✅ |
+| `cleanshot_open_from_clipboard` | Annotate clipboard image | ✅ |
+
+### Utility Tools
+
+| Tool Name | Description | Human Tested? |
+|-----------|-------------|---------------|
+| `cleanshot_pin` | Pin screenshots (⚠️ must include full path, supports only `png` or `jpg`) | ✅ |
+| `cleanshot_toggle_desktop_icons` | Toggle desktop icons | ✅ |
+| `cleanshot_hide_desktop_icons` | Hide desktop icons | ✅ |
+| `cleanshot_show_desktop_icons` | Show desktop icons | ✅ |
+
+### Management Tools
+
+| Tool Name | Description | Human Tested? |
+|-----------|-------------|---------------|
+| `cleanshot_add_quick_access_overlay` | Add to quick access | ✅ |
+| `cleanshot_open_history` | Open capture history | ✅ |
+| `cleanshot_restore_recently_closed` | Restore recent file | ✅ |
+| `cleanshot_open_settings` | Open settings | ✅ |
 
 ## API Parameters
 
@@ -235,10 +171,12 @@ await callTool("cleanshot_open_annotate", {
   filepath: "/Users/username/Desktop/screenshot.png" 
 });
 ```
+## Requirements
 
-## License
-
-MIT
+- macOS
+- CleanShot X installed and running
+- Node.js 18+
+- CleanShot Pro license (for URL scheme API access)
 
 ## Contributing
 
