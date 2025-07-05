@@ -29,7 +29,7 @@
 
 When `/git` is included in a prompt, you will exclusively use the following Git commands to help you accomplish the following tasks:
 
-- `git status -short` - To check the current state of your repository
+- `git status --short` - To check the current state of your repository
 - `git add` - To stage files for commit
 - `git -no-pager diff` - To view changes between commits or working
 directory and index

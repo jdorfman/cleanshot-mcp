@@ -92,10 +92,10 @@ Add this server to your MCP client configuration. For example, in [Amp](https://
 
 ```json
 {
-  "mcpServers": {
+  "amp.mcpServers": {
     "cleanshot": {
-      "command": "node",
-      "args": ["/path/to/cleanshot-mcp/dist/index.js"],
+      "command": "npx",
+      "args": ["cleanshot-mcp"],
       "env": {}
     }
   }
@@ -140,7 +140,7 @@ All tools are prefixed with `cleanshot_` and correspond to CleanShot's URL schem
 - `cleanshot_restore_recently_closed` - Restore recent file
 - `cleanshot_open_settings` - Open settings
 
-## Examples
+## Examples (Human Tested)
 
 **Prompt:**
 > Capture fullscreen and copy
