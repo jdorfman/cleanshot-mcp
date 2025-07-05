@@ -1,20 +1,32 @@
 # CleanShot MCP Server (Unofficial)
 
-A Model Context Protocol (MCP) server that provides integration with CleanShot's URL scheme API. This server allows you to trigger [CleanShot](https://cleanshot.com/) actions programmatically through MCP-compatible applications. [Created with Amp](https://ampcode.com/threads/T-6a3d9fd7-62e8-4e14-b6e8-f1b8ad9c4348).
+**Control CleanShot X from any MCP-compatible AI assistant with simple commands like "take a screenshot" or "capture this area".**
 
-## Table of Contents
+_Built with the [Model Context Protocol (MCP)](https://modelcontextprotocol.io) - a standard for connecting AI assistants to external tools. Works with [Amp](https://ampcode.com), Claude Desktop, and other MCP-compatible applications._
 
-- [Getting Started](#getting-started)
-- [Examples](#examples)
-- [Available Tools](#available-tools)
-- [Development](#development)
-- [Requirements](#requirements)
+![Demo GIF Placeholder](https://via.placeholder.com/600x300/0066CC/FFFFFF?text=Demo+GIF+Coming+Soon)
 
-## Getting Started
+## Requirements
 
-### MCP Client Configuration
+- macOS
+- CleanShot X installed and running
+- Node.js 18+
 
-Add this server to your MCP client configuration. For example, in [Amp](https://ampcode.com):
+## Quick Start
+
+### 1. Install the MCP Server
+
+```bash
+# Option 1: Use without installing (recommended)
+npx cleanshot-mcp
+
+# Option 2: Install globally
+npm install -g cleanshot-mcp
+```
+
+### 2. Configure Your MCP Client
+
+Add this to your MCP client configuration:
 
 ```json
 {
@@ -28,96 +40,36 @@ Add this server to your MCP client configuration. For example, in [Amp](https://
 }
 ```
 
+### 3. Start Using It
+
+Simply tell your AI assistant:
+
+- "Take a fullscreen screenshot and copy it"
+- "Capture this area: x: 100, y: 100, width: 500, height: 300"
+- "Open CleanShot settings"
+
 ## Examples
 
-**Prompt:**
-> Capture fullscreen and copy
+**Natural Language Commands:**
 
-**Response:**
-
-```text
-cleanshot • cleanshot_capture_fullscreen
-({ "action": "copy" })
-
-Took fullscreen screenshot: cleanshot://capture-fullscreen?action=copy
-```
-
----
-
-**Prompt:**
-> Capture the following area: x: 100, y: 100, width: 500, height: 300 and upload
-
-**Response:**
-
-```text
-cleanshot • cleanshot_capture_area
-({ "x": 100, "y": 100, "width": 500, "height": 300, "action": "upload" })
-
-Opened CleanShot Capture Area: cleanshot://capture-area?x=100&y=100&width=500&height=300&action=upload
-```
+| Command | What It Does |
+|---------|-------------|
+| "Take a fullscreen screenshot and copy it" | Captures entire screen and copies to clipboard |
+| "Capture this area: x: 100, y: 100, width: 500, height: 300" | Captures specific screen region |
+| "Open CleanShot settings" | Opens CleanShot preferences |
+| "Extract text from this area" | Uses OCR to extract text from screen region |
 
 ## Available Tools
 
-All tools are prefixed with `cleanshot_` and correspond to CleanShot's URL scheme commands:
+This MCP server provides **17 CleanShot tools** including:
 
-### Basic Screenshot Tools
+- **Screenshots**: Area capture, fullscreen, window capture, self-timer
+- **Recording**: Screen recording with custom areas
+- **Text Extraction**: OCR from any screen region
+- **Annotation**: Open annotation tools for images
+- **Management**: History, settings, desktop icon control
 
-| Tool Name | Description | Human Tested? |
-|-----------|-------------|---------------|
-| `cleanshot_capture_area` | Open area capture mode | ✅ |
-| `cleanshot_capture_fullscreen` | Take fullscreen screenshot | ✅ |
-| `cleanshot_capture_window` | Capture window mode | ✅ |
-| `cleanshot_capture_previous_area` | Repeat last screenshot | ✅ |
-
-### Advanced Capture Tools
-
-| Tool Name | Description | Human Tested? |
-|-----------|-------------|---------------|
-| `cleanshot_all_in_one` | Launch All-In-One mode | ✅ |
-| `cleanshot_scrolling_capture` | Scrolling capture mode | ✅ |
-| `cleanshot_self_timer` | Self-timer capture | ✅ |
-| `cleanshot_record_screen` | Screen recording mode | ✅ |
-
-### Text & Annotation Tools
-
-| Tool Name | Description | Human Tested? |
-|-----------|-------------|---------------|
-| `cleanshot_capture_text` | OCR text extraction | ✅ |
-| `cleanshot_open_annotate` | Open annotation tool | ✅ |
-| `cleanshot_open_from_clipboard` | Annotate clipboard image | ✅ |
-
-### Utility Tools
-
-| Tool Name | Description | Human Tested? |
-|-----------|-------------|---------------|
-| `cleanshot_pin` | Pin screenshots (⚠️ must include full path, supports only `png` or `jpg`) | ✅ |
-| `cleanshot_toggle_desktop_icons` | Toggle desktop icons | ✅ |
-| `cleanshot_hide_desktop_icons` | Hide desktop icons | ✅ |
-| `cleanshot_show_desktop_icons` | Show desktop icons | ✅ |
-
-### Management Tools
-
-| Tool Name | Description | Human Tested? |
-|-----------|-------------|---------------|
-| `cleanshot_add_quick_access_overlay` | Add to quick access | ✅ |
-| `cleanshot_open_history` | Open capture history | ✅ |
-| `cleanshot_restore_recently_closed` | Restore recent file | ✅ |
-| `cleanshot_open_settings` | Open settings | ✅ |
-
-## API Parameters
-
-### Coordinate System
-
-- Point (0,0) is located at the **lower left** corner of the screen
-- X increases going right, Y increases going up
-
-### Common Parameters
-
-- `x`, `y`: Coordinates for capture area
-- `width`, `height`: Dimensions of capture area
-- `display`: Display number (1 = main display, 2 = secondary, etc.)
-- `action`: Post-capture action (`copy`, `save`, `annotate`, `upload`, `pin`)
-- `filepath`: Path to image/video files (PNG, JPEG, MP4)
+[🔧 View Complete Tool List](TOOLS.md) | [📕 API Reference](API.md)
 
 ## Development
 
@@ -142,56 +94,23 @@ Make sure CleanShot is installed and running, then test individual commands:
 node dist/index.js
 ```
 
-### Example Usage
-
-```javascript
-// Take a fullscreen screenshot and copy to clipboard
-await callTool("cleanshot_capture_fullscreen", { action: "copy" });
-
-// Capture a specific area and annotate it
-await callTool("cleanshot_capture_area", { 
-  x: 100, 
-  y: 100, 
-  width: 500, 
-  height: 300, 
-  action: "annotate" 
-});
-
-// Extract text from a specific screen area
-await callTool("cleanshot_capture_text", { 
-  x: 0, 
-  y: 0, 
-  width: 800, 
-  height: 600,
-  linebreaks: false 
-});
-
-// Open a file for annotation
-await callTool("cleanshot_open_annotate", { 
-  filepath: "/Users/username/Desktop/screenshot.png" 
-});
-```
-## Requirements
-
-- macOS
-- CleanShot X installed and running
-- Node.js 18+
-- CleanShot Pro license (for URL scheme API access)
-
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+4. Submit a pull request
 
 ## Support
 
-For issues related to:
-
-- **This MCP server**: Open an issue on GitHub
-- **MCP protocol**: See [MCP documentation](https://modelcontextprotocol.io)
+- **Issues with this MCP server**: [Open a GitHub issue](https://github.com/jdorfman/cleanshot-mcp/issues)
+- **MCP protocol questions**: [MCP Documentation](https://modelcontextprotocol.io)
 
 > [!IMPORTANT]
-> Please **DO NOT** contact CleanShot support for problems with this MCP server. They are not connected to this project. We're just big fans :heart:
+> Please **DO NOT** contact CleanShot support for problems with this MCP server. This is an unofficial integration created by fans of their product.
+
+---
+
+**[⭐ Star this repo](https://github.com/jdorfman/cleanshot-mcp)** if you find it useful!
+
+_Created with [Amp](https://ampcode.com/threads/T-6a3d9fd7-62e8-4e14-b6e8-f1b8ad9c4348) - an AI coding assistant._
