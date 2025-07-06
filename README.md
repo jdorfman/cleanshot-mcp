@@ -4,7 +4,7 @@
 
 _Built with the [Model Context Protocol (MCP)](https://modelcontextprotocol.io) - a standard for connecting AI assistants to external tools. Works with [Amp](https://ampcode.com), Claude Desktop, and other MCP-compatible applications._
 
-![Demo GIF Placeholder](https://via.placeholder.com/600x300/0066CC/FFFFFF?text=Demo+GIF+Coming+Soon)
+![CleanShot MCP Demo](https://github.com/user-attachments/assets/7a040093-e41a-4e65-9b93-01fc3e1e36e1)
 
 ## Requirements
 
@@ -113,4 +113,4 @@ node dist/index.js
 
 **[⭐ Star this repo](https://github.com/jdorfman/cleanshot-mcp)** if you find it useful!
 
-_Created with [Amp](https://ampcode.com/threads/T-6a3d9fd7-62e8-4e14-b6e8-f1b8ad9c4348) - an AI coding assistant._
+_Created with [Amp](https://ampcode.com/threads/T-6a3d9fd7-62e8-4e14-b6e8-f1b8ad9c4348) by Sourcegraph_
